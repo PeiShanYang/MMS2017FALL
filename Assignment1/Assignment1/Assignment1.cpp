@@ -15,8 +15,11 @@ int main()
 {
 	Mat Image = imread("000.jpg");
 	Mat GrayImage(500, 500, CV_8UC1); // Gray
-	Mat BW1Image(1000, 1000, CV_8UC1); // Dithering
-	Mat BW2Image(500, 500, CV_8UC1); // Side Effect of Dithering
+	Mat DitheringImage(1000, 1000, CV_8UC1); // Dithering
+	Mat DitherMatrixImage0(500, 500, CV_8UC1);
+	Mat DitherMatrixImage1(500, 500, CV_8UC1);
+	Mat DitherMatrixImage2(500, 500, CV_8UC1);
+	Mat DitherMatrixImage3(500, 500, CV_8UC1);
 	
 	int i, j;
 
@@ -36,55 +39,66 @@ int main()
 		{
 			if(GrayImage.at<uchar>(i, j) >= 201)
 			{
-				BW1Image.at<uchar>(2 * i, 2 * j) = 255;
-				BW1Image.at<uchar>(2 * i, 2 * j + 1) = 255;
-				BW1Image.at<uchar>(2 * i + 1, 2 * j) = 255;
-				BW1Image.at<uchar>(2 * i + 1, 2 * j + 1) = 255;
+				DitheringImage.at<uchar>(2 * i, 2 * j) = 255;
+				DitheringImage.at<uchar>(2 * i, 2 * j + 1) = 255;
+				DitheringImage.at<uchar>(2 * i + 1, 2 * j) = 255;
+				DitheringImage.at<uchar>(2 * i + 1, 2 * j + 1) = 255;
 			} // 全白
 			else if(GrayImage.at<uchar>(i, j) >= 151)
 			{
-				BW1Image.at<uchar>(2 * i, 2 * j) = 0;
-				BW1Image.at<uchar>(2 * i, 2 * j + 1) = 255;
-				BW1Image.at<uchar>(2 * i + 1, 2 * j) = 255;
-				BW1Image.at<uchar>(2 * i + 1, 2 * j + 1) = 255;
+				DitheringImage.at<uchar>(2 * i, 2 * j) = 0;
+				DitheringImage.at<uchar>(2 * i, 2 * j + 1) = 255;
+				DitheringImage.at<uchar>(2 * i + 1, 2 * j) = 255;
+				DitheringImage.at<uchar>(2 * i + 1, 2 * j + 1) = 255;
 			} // 點黑第0格
 			else if(GrayImage.at<uchar>(i, j) >= 101)
 			{
-				BW1Image.at<uchar>(2 * i, 2 * j) = 0;
-				BW1Image.at<uchar>(2 * i, 2 * j + 1) = 255;
-				BW1Image.at<uchar>(2 * i + 1, 2 * j) = 255;
-				BW1Image.at<uchar>(2 * i + 1, 2 * j + 1) = 0;
+				DitheringImage.at<uchar>(2 * i, 2 * j) = 0;
+				DitheringImage.at<uchar>(2 * i, 2 * j + 1) = 255;
+				DitheringImage.at<uchar>(2 * i + 1, 2 * j) = 255;
+				DitheringImage.at<uchar>(2 * i + 1, 2 * j + 1) = 0;
 			} // 點黑第0、3格
 			else if(GrayImage.at<uchar>(i, j) >= 51)
 			{
-				BW1Image.at<uchar>(2 * i, 2 * j) = 0;
-				BW1Image.at<uchar>(2 * i, 2 * j + 1) = 0;
-				BW1Image.at<uchar>(2 * i + 1, 2 * j) = 255;
-				BW1Image.at<uchar>(2 * i + 1, 2 * j + 1) = 0;
+				DitheringImage.at<uchar>(2 * i, 2 * j) = 0;
+				DitheringImage.at<uchar>(2 * i, 2 * j + 1) = 0;
+				DitheringImage.at<uchar>(2 * i + 1, 2 * j) = 255;
+				DitheringImage.at<uchar>(2 * i + 1, 2 * j + 1) = 0;
 			} // 點黑第0、1、3格
 			else
 			{
-				BW1Image.at<uchar>(2 * i, 2 * j) = 0;
-				BW1Image.at<uchar>(2 * i, 2 * j + 1) = 0;
-				BW1Image.at<uchar>(2 * i + 1, 2 * j) = 0;
-				BW1Image.at<uchar>(2 * i + 1, 2 * j + 1) = 0;
+				DitheringImage.at<uchar>(2 * i, 2 * j) = 0;
+				DitheringImage.at<uchar>(2 * i, 2 * j + 1) = 0;
+				DitheringImage.at<uchar>(2 * i + 1, 2 * j) = 0;
+				DitheringImage.at<uchar>(2 * i + 1, 2 * j + 1) = 0;
 			} // 全黑
 		}
 	}
 
 	// 黑白Side Effect of Dithering
-	int DitherMatrix[16] = {0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5};
-	int x, y;
-	for(i = 0; i < GrayImage.cols; i++)
+	int DitherMatrix[4][16] = {
+		{ 0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5},
+		{ 0, 12, 3, 15, 8, 4, 11, 7, 2, 14, 1, 13, 10, 6, 9, 5 },
+		{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
+		{ 0, 7, 5, 2, 8, 15, 13, 10, 11, 12, 14, 9, 3, 4, 6, 1}
+	}; // 0是原本的，1是行列相反，2是0~15照順序，3是集中於中間
+	int x, y, k;
+	for (i = 0; i < 4; i++)
 	{
-		for(j = 0; j < GrayImage.rows; j++)
+		for(j = 0; j < GrayImage.cols; j++)
 		{
-			x = i % 4;
-			y = j % 4;
-			if(GrayImage.at<uchar>(i, j) > DitherMatrix[x * 4 + y] * 16)
-				BW2Image.at<uchar>(i ,j) = 255;
-			else BW2Image.at<uchar>(i, j) = 0;
+			for(k = 0; k < GrayImage.rows; k++)
+			{
+				x = i % 4;
+				y = j % 4;
+				if(GrayImage.at<uchar>(j, k) > DitherMatrix[i][x * 4 + y] * 16)
+					DitherMatrixImage3.at<uchar>(j, k) = 255;
+				else DitherMatrixImage3.at<uchar>(j, k) = 0;
+			}
 		}
+		if (i == 0)DitherMatrixImage0 = DitherMatrixImage3.clone();
+		else if (i == 1)DitherMatrixImage1 = DitherMatrixImage3.clone();
+		else if (i == 2)DitherMatrixImage2 = DitherMatrixImage3.clone();
 	}
 	/* Algo.
 	BEGIN
@@ -100,15 +114,20 @@ int main()
 					O(x, y) = 0;
 	END */
 	
-
 	namedWindow("Image", WINDOW_AUTOSIZE);
-	namedWindow("Gray", WINDOW_AUTOSIZE);
-	namedWindow("Dithering", WINDOW_AUTOSIZE);
-	namedWindow("Side Effect of Dithering", WINDOW_AUTOSIZE);
+	namedWindow("GrayImage", WINDOW_AUTOSIZE);
+	namedWindow("DitheringImage", WINDOW_AUTOSIZE);
+	namedWindow("DitherMatrixImage0", WINDOW_AUTOSIZE);
+	namedWindow("DitherMatrixImage1", WINDOW_AUTOSIZE);
+	namedWindow("DitherMatrixImage2", WINDOW_AUTOSIZE);
+	namedWindow("DitherMatrixImage3", WINDOW_AUTOSIZE);
 	imshow("Image", Image);
 	imshow("Gray", GrayImage);
-	imshow("Dithering", BW1Image);
-	imshow("Side Effect of Dithering", BW2Image);
+	imshow("DitheringImage", DitheringImage);
+	imshow("DitherMatrixImage0", DitherMatrixImage0);
+	imshow("DitherMatrixImage1", DitherMatrixImage1);
+	imshow("DitherMatrixImage2", DitherMatrixImage2);
+	imshow("DitherMatrixImage3", DitherMatrixImage3);
 	waitKey(0);
 
 	return 0;
