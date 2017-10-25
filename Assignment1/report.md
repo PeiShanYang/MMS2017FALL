@@ -20,7 +20,6 @@
   
 ![Picture](001.jpg)
   
-  
 * Implement the dithering algorithm
 
   一般的Dithering，將原本每像素增加為四個像素，圖片會變成四倍大。依照每個像素灰階的程度不同，打點的個數不同。
