@@ -24,6 +24,7 @@
 * Implement the dithering algorithm
 
   一般的Dithering，將原本每像素增加為四個像素，圖片會變成四倍大。依照每個像素灰階的程度不同，打點的個數不同。
+  我的打點方法：
   
 
 矩陣|第0格|第1格|第2格|第3格
@@ -35,8 +36,40 @@
 100~51|0|0|255|0
 50~0|0|0|0|0
 
+![Picture](003.jpg)
 
-  利用特殊演算法進行Dither Matrix運算的Dithering，不會造成圖片放大，
+
+  利用特殊演算法進行Dither Matrix運算的Dithering，不會造成圖片放大，但我覺得效果比一般的差。
+  範例Dither Matrix：
+  
+<table>
+        <tr>
+            <th>0</th>
+            <th>8</th>
+            <th>2</th>
+            <th>10</th>
+        </tr>
+        <tr>
+            <th>12</th>
+            <th>4</th>
+            <th>14</th>
+            <th>6</th>
+        </tr>
+        <tr>
+            <th>3</th>
+            <th>11</th>
+            <th>1</th>
+            <th>9</th>
+        </tr>
+        <tr>
+            <th>15</th>
+            <th>7</th>
+            <th>13</th>
+            <th>5</th>
+        </tr>
+    </table>
+
+![Picture](002.jpg)
 
 ##  各式比較
 * 灰階圖片使用單通道
