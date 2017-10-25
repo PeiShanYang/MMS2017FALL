@@ -38,7 +38,7 @@
 ![Picture](003.jpg)
 
 
-  利用特殊演算法進行Dither Matrix運算的Dithering，不會造成圖片放大，但我覺得效果比一般的差。
+  利用特殊演算法進行Dither Matrix運算的Dithering，不會造成圖片放大，但我覺得效果比放大四倍的差。
   範例Dither Matrix：
   
 <table>
