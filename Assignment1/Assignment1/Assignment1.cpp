@@ -81,24 +81,24 @@ int main()
 		{ 0, 12, 3, 15, 8, 4, 11, 7, 2, 14, 1, 13, 10, 6, 9, 5 },
 		{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
 		{ 0, 7, 5, 2, 8, 15, 13, 10, 11, 12, 14, 9, 3, 4, 6, 1}
-	}; // 0是原本的，1是行列相反，2是0~15照順序，3是集中於中間
+	}; // 0是原本的，1是行列相反，2是0~1照順序，3是集中於中間
 	int x, y, k;
-	for (i = 0; i < 4; i++)
+	for (i = 3; i >= 0; i--)
 	{
-		for(j = 0; j < GrayImage.cols; j++)
+		for (j = 0; j < GrayImage.cols; j++)
 		{
-			for(k = 0; k < GrayImage.rows; k++)
+			for (k = 0; k < GrayImage.rows; k++)
 			{
-				x = i % 4;
-				y = j % 4;
-				if(GrayImage.at<uchar>(j, k) > DitherMatrix[i][x * 4 + y] * 16)
-					DitherMatrixImage3.at<uchar>(j, k) = 255;
-				else DitherMatrixImage3.at<uchar>(j, k) = 0;
+				x = j % 4;
+				y = k % 4;
+				if (GrayImage.at<uchar>(j, k) > DitherMatrix[i][x * 4 + y] * 16)
+					DitherMatrixImage0.at<uchar>(j, k) = 255;
+				else DitherMatrixImage0.at<uchar>(j, k) = 0;
 			}
 		}
-		if (i == 0)DitherMatrixImage0 = DitherMatrixImage3.clone();
-		else if (i == 1)DitherMatrixImage1 = DitherMatrixImage3.clone();
-		else if (i == 2)DitherMatrixImage2 = DitherMatrixImage3.clone();
+		if (i == 1)DitherMatrixImage1 = DitherMatrixImage0.clone();
+		else if (i == 2)DitherMatrixImage2 = DitherMatrixImage0.clone();
+		else if (i == 3)DitherMatrixImage3 = DitherMatrixImage0.clone();
 	}
 	/* Algo.
 	BEGIN
