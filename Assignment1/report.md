@@ -2,8 +2,7 @@
 彩色圖片->灰階->黑白
 
 ##  作業內容簡介
-<ol>
-    <li>Write a program to read image</li>
+<ol><li>Write a program to read image</li>
     <li>Convert color images to gray-level images</li>
     <li>Implement the dithering algorithm</li>
 </ol>
