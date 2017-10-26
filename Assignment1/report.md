@@ -40,9 +40,7 @@
   利用特殊演算法進行Dither Matrix運算的Dithering，不會造成圖片放大，但我覺得效果比放大四倍的差。
   
   範例Dither Matrix：
-<table>
-        <tr>
-            <th>0</th>
+<table><tr><th>0</th>
             <th>8</th>
             <th>2</th>
             <th>10</th>
@@ -70,9 +68,7 @@
 ![Picture](002.jpg)
 
   行列相反Dither Matrix：
-<table>
-        <tr>
-            <th>0</th>
+<table><tr><th>0</th>
             <th>12</th>
             <th>3</th>
             <th>15</th>
@@ -100,9 +96,7 @@
 ![Picture](004.jpg)
 
   直接輸入0~15的Dither Matrix：
-<table>
-        <tr>
-            <th>0</th>
+<table><tr><th>0</th>
             <th>1</th>
             <th>2</th>
             <th>3</th>
@@ -130,9 +124,7 @@
 ![Picture](005.jpg)
 
   大數字集中於中間其他平均分散的Dither Matrix：
-<table>
-        <tr>
-            <th>0</th>
+<table><tr><th>0</th>
             <th>7</th>
             <th>5</th>
             <th>2</th>
