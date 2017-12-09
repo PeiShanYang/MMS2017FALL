@@ -6,8 +6,8 @@ Freq2 = [65 73 82 87 98 110 124]
 Freq4 = [262 294 330 349 392 440 494]
 
 fs = 8000
-T2 = (0 : fs) / fs
-T4 = (0 : 0.5 * fs) / fs
+T2 = (0 : 0.5 * fs) / fs
+T4 = (0 : 0.25 * fs) / fs
 
 % 1/2 notes
 AltoDo2 = A * sin(2 * pi * Freq4(1) * T2)
@@ -42,4 +42,4 @@ Back = [BassoMi4 BassoSol4 BassoRe4 BassoSol4 BassoDo4 BassoRe4 BassoMi4 BassoDo
 Song = Front + Back
 
 % 播放
-sound(Song)
+sound(Song, fs)
