@@ -43,3 +43,6 @@ Song = Front + Back
 
 % 播放
 sound(Song, fs)
+
+% 匯出音檔
+wavwrite(Song, fs, 'MyLittleBee')
