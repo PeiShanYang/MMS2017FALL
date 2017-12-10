@@ -2,9 +2,9 @@
 音訊處理
 
 ##  作業內容簡介
-<ol><li>使用者輸入簡譜可播放</li>
-    <li>不同採樣率的小蜜蜂</li>
-    <li>雙頻道的音樂輸出</li>
+<ol><li>使用者輸入簡譜可播放(Assignment2UserPlay.m)</li>
+    <li>不同採樣率的小蜜蜂(Assignment2DifferentFs.m)</li>
+    <li>雙頻道的音樂輸出(Assignment2TwoChennel.m)</li>
 </ol>
 
 ##  成果報告
