@@ -43,15 +43,17 @@ Back = [BassoMi4 BassoSol4 BassoRe4 BassoSol4 BassoDo4 BassoRe4 BassoMi4 BassoDo
 Song = Front + Back;
 
 % 播放
+sound(Front, fs1);
+sound(Back, fs1);
 sound(Song, fs1);
 
 % 輸出
 wavwrite(Front, fs1, 'fs8000LittleBee');
-wavwrite(Back, fs1, 'Back');
-wavwrite(Song, fs1, 'Mix');
+wavwrite(Back, fs1, 'fs8000LittleBeeBack');
+wavwrite(Song, fs1, 'fs8000LittleBeeMix');
+
 
 % 使用採樣率fs2
-
 T2 = (0 : 0.5 * fs2) / fs2;
 T4 = (0 : 0.25 * fs2) / fs2;
 
@@ -80,7 +82,7 @@ AltoSol4 = A * sin(2 * pi * Freq4(5) * T4);
 AltoLa4 = A * sin(2 * pi * Freq4(6) * T4);
 AltoSi4 = A * sin(2 * pi * Freq4(7) * T4);
 
-% 主旋律與伴奏
+% 主旋律
 Song = [AltoSol4 AltoMi4 AltoMi2 0 AltoFa4 AltoRe4 AltoRe2 0 AltoDo4 AltoRe4 AltoMi4 AltoFa4 AltoSol4 AltoSol4 AltoSol2 0];
 
 % 播放
