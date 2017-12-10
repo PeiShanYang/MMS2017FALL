@@ -24,9 +24,22 @@
 使用者輸入|程式中的命名||使用者輸入|程式中的命名
 :---:|:---:|:---:|:---:|:---:
 1|AltoDo4||a|BassoDo4
-2|AltoRe4||a|BassoRe4
-3|AltoMi4||a|BassoMi4
-4|AltoFa4||a|BassoFa4
-5|AltoSol4||a|BassoSol4
-6|AltoLa4||a|BassoLa4
-7|AltoSi4||a|BassoSi4
+2|AltoRe4||b|BassoRe4
+3|AltoMi4||c|BassoMi4
+4|AltoFa4||d|BassoFa4
+5|AltoSol4||e|BassoSol4
+6|AltoLa4||f|BassoLa4
+7|AltoSi4||g|BassoSi4
+
+* The flowchart of User Playing Mode
+
+![Picture](UserPlayFlowchart.JPG)
+
+* The way to set up and run My program
+
+這次使用Matlab來製作，首先先置備好level2及level4中的四分音符，
+
+因不是要做作曲功能的程式，所以在這裡沒有做其他音符。
+
+製成音符步驟如下：
+
