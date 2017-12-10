@@ -101,7 +101,7 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% ™Ï©l§∆
+% ÂàùÂßãÂåñ
 
 % amplitude
 A = 1;
@@ -144,27 +144,25 @@ for i = 1:len
 			sound(AltoMi4);
 		case '4'
 			sound(AltoFa4);
-        case '5'
-            sound(AltoSol4);
-        case '6'
-            sound(AltoLa4);
-        case '7'
-            sound(AltoSi4);
-        case 'a'
-            sound(BassoDo4);
+		case '5'
+		    	sound(AltoSol4);
+		case '6'
+		    	sound(AltoLa4);
+		case '7'
+		    	sound(AltoSi4);
+		case 'a'
+		    	sound(BassoDo4);
 		case 'b'
 			sound(BassoRe4);
 		case 'c'
 			sound(BassoMi4);
 		case 'd'
 			sound(BassoFa4);
-        case 'e'
-            sound(BassoSol4);
-        case 'f'
-            sound(BassoLa4);
-        case 'g'
-            sound(BassoSi4);
+		case 'e'
+		    	sound(BassoSol4);
+		case 'f'
+		    	sound(BassoLa4);
+		case 'g'
+		   	sound(BassoSi4);
     end
 end
-
-
