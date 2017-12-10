@@ -66,6 +66,18 @@
 
         四分四階Do：AltoDo4 = A * sin(2 * pi * Freq4(1) * T4)
 
+### 不同採樣率的小蜜蜂
+
+* 採樣率8000與44100比較
+
+    選擇市面上常見的44100與8000比較。
+    
+    [採樣率8000]
+    
+    [採樣率44100]
+    
+  [採樣率8000]:https://github.com/PeiShanYang/MMS2017FALL/blob/master/Assignment2/fs8000LittleBee.wav
+  [採樣率44100]:https://github.com/PeiShanYang/MMS2017FALL/blob/master/Assignment2/fs44100LittleBee.wav
 
 ### 雙頻道的音樂輸出
 
