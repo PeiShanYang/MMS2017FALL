@@ -13,13 +13,13 @@
 
 ![Picture](UserPlay.JPG)
 
-在這裡使用者可以輸入自己想輸的音符，按下播放後即放出音樂。
+    在這裡使用者可以輸入自己想輸的音符，按下播放後即放出音樂。
 
 * The format I design for the input text file of musical notes
 
-使用者將輸入1-7代表level4的Do-Si、a-g代表level2的Do-Si，
+    使用者將輸入1-7代表level4的Do-Si、a-g代表level2的Do-Si，
 
-在此程式中只有用到四分音符，所以轉換如下：
+    在此程式中只有用到四分音符，所以轉換如下：
 
 使用者輸入|程式中的命名||使用者輸入|程式中的命名
 :---:|:---:|:---:|:---:|:---:
@@ -37,25 +37,25 @@
 
 * The way to set up and run My program
 
-這次使用Matlab來製作，首先先置備好level2及level4中的四分音符，
+    這次使用Matlab來製作，首先先置備好level2及level4中的四分音符，
 
-因不是要做作曲功能的程式，所以在這裡沒有做其他音符。
+    因不是要做作曲功能的程式，所以在這裡沒有做其他音符。
 
-製成音符步驟如下：
+    製成音符步驟如下：
 
-公式：x(t) = A sin(2πft)
-1. 設置震幅大小：A = 1
-2. 頻率根據Level Table設置：
+    公式：x(t) = A sin(2πft)
+    1. 設置震幅大小：A = 1
+    2. 頻率根據Level Table設置：
 
-    Freq2 = [65 73 82 87 98 110 124]
+        Freq2 = [65 73 82 87 98 110 124]
 
-    Freq4 = [262 294 330 349 392 440 494]
-3. Sample Frequency設置：fs = 8000
-4. 四分音符的時間：T4 = (1 : 0.25 * fs) / fs
-5. 音符製作範例
+        Freq4 = [262 294 330 349 392 440 494]
+    3. Sample Frequency設置：fs = 8000
+    4. 四分音符的時間：T4 = (1 : 0.25 * fs) / fs
+    5. 音符製作範例
 
-    四分休止符：Zero4 = A * sin(2 * pi * 0 * T4)
-    
-    四分二階Do：BassoDo4 = A * sin(2 * pi * Freq2(1) * T4)
-    
-    四分四階Do：AltoDo4 = A * sin(2 * pi * Freq4(1) * T4)
+        四分休止符：Zero4 = A * sin(2 * pi * 0 * T4)
+
+        四分二階Do：BassoDo4 = A * sin(2 * pi * Freq2(1) * T4)
+
+        四分四階Do：AltoDo4 = A * sin(2 * pi * Freq4(1) * T4)
