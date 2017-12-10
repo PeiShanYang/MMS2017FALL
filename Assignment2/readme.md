@@ -74,10 +74,14 @@
     
     [採樣率8000]
     
-    [採樣率44100]
-    
   [採樣率8000]:https://github.com/PeiShanYang/MMS2017FALL/blob/master/Assignment2/fs8000LittleBee.wav
+![Picture](fs44100.JPG)
+
+   [採樣率44100]
+  
   [採樣率44100]:https://github.com/PeiShanYang/MMS2017FALL/blob/master/Assignment2/fs44100LittleBee.wav
+![Picture](fs8000.JPG)
+    相比之下，採樣率8000的小蜜蜂後面連續的Sol便會比較斷斷續續，但44100的小蜜蜂則不會。
 
 ### 雙頻道的音樂輸出
 
