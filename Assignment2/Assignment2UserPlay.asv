@@ -61,7 +61,7 @@ guidata(hObject, handles);
 % UIWAIT makes Assignment2UserPlay wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
-% ªì©l¤Æ
+% ÂªÃ¬Â©lÂ¤Ã†
 
 % amplitude
 global A = 1;
@@ -136,37 +136,32 @@ len = length(textString);
 for i = 1:len
 	switch textString(i)
 		case '1'
-            sound(AltoDo4);
+            		sound(AltoDo4);
 		case '2'
 			sound(AltoRe4);
 		case '3'
 			sound(AltoMi4);
 		case '4'
 			sound(AltoFa4);
-        case '5'
-            sound(AltoSol4);
-        case '6'
-            sound(AltoLa4);
-        case '7'
-            sound(AltoSi4);
-        case 'a'
-            sound(BassoDo4);
+		case '5'
+		    sound(AltoSol4);
+		case '6'
+		    sound(AltoLa4);
+		case '7'
+		    sound(AltoSi4);
+		case 'a'
+		    sound(BassoDo4);
 		case 'b'
 			sound(BassoRe4);
 		case 'c'
 			sound(BassoMi4);
 		case 'd'
 			sound(BassoFa4);
-        case 'e'
-            sound(BassoSol4);
-        case 'f'
-            sound(BassoLa4);
-        case 'g'
-            sound(BassoSi4);
-    end
+		case 'e'
+		    sound(BassoSol4);
+		case 'f'
+		    sound(BassoLa4);
+		case 'g'
+		    sound(BassoSi4);
+    	end
 end
-%set(handles.edit2, 'String', Front);
-%textString2 = get(handles.edit2,'String');
-%len2 = length(textString2);
-
-
