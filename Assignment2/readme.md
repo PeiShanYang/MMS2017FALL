@@ -2,15 +2,15 @@
 音訊處理
 
 ##  作業內容簡介
-使用者輸入簡譜可播放 [Assignment2UserPlay]
+使用者輸入簡譜可播放 [Assignment2UserPlay.m]
 
-不同採樣率的小蜜蜂 [Assignment2DifferentFs]
+不同採樣率的小蜜蜂 [Assignment2DifferentFs.m]
 
-雙頻道的音樂輸出 [Assignment2TwoChennel]
+雙頻道的音樂輸出 [Assignment2TwoChennel.m]
 
-  [Assignment2UserPlay]: https://github.com/PeiShanYang/MMS2017FALL/blob/master/Assignment2/Assignment2UserPlay.m
-  [Assignment2DifferentFs]: https://github.com/PeiShanYang/MMS2017FALL/blob/master/Assignment2/Assignment2DifferentFs.m
-  [Assignment2TwoChennel]: https://github.com/PeiShanYang/MMS2017FALL/blob/master/Assignment2/Assignment2TwoChennel.m
+  [Assignment2UserPlay.m]: https://github.com/PeiShanYang/MMS2017FALL/blob/master/Assignment2/Assignment2UserPlay.m
+  [Assignment2DifferentFs.m]: https://github.com/PeiShanYang/MMS2017FALL/blob/master/Assignment2/Assignment2DifferentFs.m
+  [Assignment2TwoChennel.m]: https://github.com/PeiShanYang/MMS2017FALL/blob/master/Assignment2/Assignment2TwoChennel.m
 
 ##  成果報告
 因為GUI介面製作尚不熟悉的問題，只好將使用者輸入簡譜以及同時伴奏的功能分開製作。
