@@ -163,7 +163,7 @@ Alto|La|2
   
   ![Picture](TwoChannelMix.JPG)
   
-  下次可以是者將雜訊剝除。
+  下次可以試著將雜訊剝除。
 
 * 心得：途中發現離題
 
