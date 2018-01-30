@@ -21,8 +21,8 @@ int main()
 	int select; // 給使用者輸入選項
 	
 	printf("Please enter the number to select the function.\n");
-	printf("1. Sequential search.\n");
-	printf("2. 2D logarithm search.\n");
+	printf("1. Sequential search.\n"); // Sequential search
+	printf("2. 2D logarithm search.\n"); // 2D logarithm search
 	printf("Others. Exist.\n");
 
 	scanf_s("%d", &select);
@@ -31,43 +31,59 @@ int main()
 	{
 		// Sequential search是依原始座標中心一塊一塊與周邊16*16比較
 		int x, y; // 原始圖片座標參數
-		int centerx, centery;
 		for(x = 0; x < target.rows; x = x + 16)
 		{
 			for(y = 0; y < target.cols; y = y + 16)
 			{
 				double minMAD = DBL_MAX;
-				int minu = 0, minv = 0; // 紀錄差異最小的
-				int u, v; // 比較圖片座標用相對去加減
-				centerx = x + 8, centery = y + 8;
-				for(u = -8; u < 9; u++)
+				int u = 0, v = 0; // 紀錄差異最小的
+				int i, j; // 比較用的參數，紀錄相對座標
+				for(i = -15; i < 16; i++)
 				{
-					for(v = -8; v < 9; v++)
+					for(j = -15; j < 16; j++)
 					{
 						double temp = 0;
-						if((centerx + u) < 0 || (centery + v) < 0
-							|| (centerx + u) >= target.rows || (centery + v) >= target.cols)
-							break;
+						if((x + i) < 0 || (y + j) < 0 || (x + i) >= target.rows
+							|| (y + j) >= target.cols)break; // 如果已超出圖片範圍就無需運算
 						else
 						{
-							temp = target.at<Vec3b>(centerx + u, centery + v)[0] - reference.at<Vec3b>(centerx, centery)[0];
-							temp = abs(temp);
+							int m, n; // 累積周遭用的參數
+							for(m = 0; m < 16; m++)
+							{
+								for(n = 0; n < 16; n++)
+								{
+									if((x + i + m) >= 0 && (y + j + n) >= 0
+										&& (x + i + m) < target.rows && (y + j + n) < target.cols)
+									{ // 如果沒超出圖片範圍才需運算
+										temp = temp + abs(target.at<Vec3b>(x + m, y + n)[0]
+											- reference.at<Vec3b>(x + i + m, y + j + n)[0]);
+										// 將target與reference差異的motion累積起
+									}
+								}
+							}
+							temp = temp / (16*16); // 平均
 						}
 						if(temp < minMAD)
 						{
 							minMAD = temp;
-							minu = u;
-							minv = v;
-						}
+							u = i;
+							v = j;
+						} // 如果比最小值還小，即替換
 					}
 				}
-				int i, j;
-				for (i = -8; i < 9; i++)
+				// 整理輸出結果
+				u = x + u; // 將u轉變為絕對位置
+				v = y + v; // 將v轉變為絕對位置
+				for (i = 0; i < 16; i++)
 				{
-					for (j = -8; j < 9; j++)
+					for (j = 0; j < 16; j++)
 					{
-						if ((centerx + i) >= 0 && (centery + j) >= 0 && (centerx + minu + i) >= 0 && (centery + minv + j) >= 0 && (centerx + i) < target.rows && (centery + j) < target.cols && (centerx + minu + i) < target.rows && (centery + minv + j) < target.cols)
+						if ((x + i) >= 0 && (y + j) >= 0 && (u + i) >= 0 && (v + j) >= 0
+							&& (x + i) < target.rows && (y + j) < target.cols
+							&& (u + i) < target.rows && (v + j) < target.cols)
 						{
+							// 如果沒超出圖片範圍才需運算
+							// 整理三通道
 							i2p.at<Vec3b>(x + i, y + j)[0] = target.at<Vec3b>(u + i, v + j)[0];
 							i2p.at<Vec3b>(x + i, y + j)[1] = target.at<Vec3b>(u + i, v + j)[1];
 							i2p.at<Vec3b>(x + i, y + j)[2] = target.at<Vec3b>(u + i, v + j)[2];
