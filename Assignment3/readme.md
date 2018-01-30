@@ -19,6 +19,8 @@ Motion Compensation
   輸入1，使用Sequential Search
   
   輸入2，使用2D Logarithmic Search
+  
+  輸入3，計算Sequential Search及2D Logarithmic Search的SNR值
   
 * 程式基本架構
 
@@ -61,8 +63,15 @@ Motion Compensation
 
 * SNRs
 
+  雖2D Logarithmic Search較Sequential Search模糊，
+  
+  但在信噪比上，2D Logarithmic Search比Sequential Search小。
+
 ![Picture](tence.jpg)
-  
+
+![Picture](SNR.jpg)
+
+
 
 * 模糊程度
 
