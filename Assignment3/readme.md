@@ -8,6 +8,14 @@ Motion Compensation
 
 ## 結果
 
+* 程式使用方式
+
+輸入1，使用Sequential Search
+
+輸入2，使用2D logarithmic search
+
+![Picture](step.jpg)
+
 ### Two input images
 
 * Reference
