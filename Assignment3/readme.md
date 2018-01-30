@@ -11,21 +11,26 @@ Motion Compensation
 ### Two input images
 
 * Reference
+
 ![Picture](reference.jpg)
 
 * Target
+
 ![Picture](target.jpg)
 
 ### Sequential Search
 
 * i2p
+
 ![Picture](sequentialsearch.jpg)
 
 
 ### 2D logarithmic search
 
 * i2p
+
 ![Picture](2Dlogarithmicsearch.jpg)
+
 
 ## 討論
 
