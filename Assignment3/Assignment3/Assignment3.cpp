@@ -22,7 +22,7 @@ int main()
 	
 	printf("Please enter the number to select the function.\n");
 	printf("1. Sequential search.\n"); // Sequential search
-	printf("2. 2D logarithm search.\n"); // 2D logarithm search
+	printf("2. 2D logarithmic search.\n"); // 2D logarithm search
 	printf("Others. Exist.\n");
 
 	scanf_s("%d", &select);
@@ -43,10 +43,10 @@ int main()
 					for(j = -15; j < 16; j++)
 					{
 						double temp = 0;
-						if((x + i) < 0 || (y + j) < 0 || (x + i) >= target.rows
-							|| (y + j) >= target.cols)break; // 如果已超出圖片範圍就無需運算
-						else
+						if((x + i) >= 0 && (y + j) >= 0 && (x + i) < target.rows
+							&& (y + j) < target.cols)
 						{
+							// 如果已超出圖片範圍就無需運算
 							int m, n; // 累積周遭用的參數
 							for(m = 0; m < 16; m++)
 							{
@@ -96,7 +96,94 @@ int main()
 	
 	else if(select == 2)
 	{
-		
+		// 2D logarithmic search 為沿著最小施針方向進行運算
+		int x, y; // 原始圖片座標參數
+		for (x = 31; x < target.rows; x = x + 16)
+		{
+			for (y = 31; y < target.cols; y = y + 16)
+			{
+				int offset = ceil(31 / 2);
+				int u = x, v = y; // 紀錄目前位置
+				
+				// 以自己為中心，以鄰近一格運算
+				vector<Point> macroblock;
+				macroblock.push_back(Point(u - offset, v - offset));
+				macroblock.push_back(Point(u - offset, v));
+				macroblock.push_back(Point(u - offset, v + offset));
+				macroblock.push_back(Point(u, v - offset));
+				macroblock.push_back(Point(u, v));
+				macroblock.push_back(Point(u, v + offset));
+				macroblock.push_back(Point(u + offset, v - offset));
+				macroblock.push_back(Point(u + offset, v));
+				macroblock.push_back(Point(u + offset, v + offset));
+				
+				bool last = false; // 若offset為1，轉回為真
+				while (last != true)
+				{
+					int minx, miny;
+					double minMAD = DBL_MAX;
+					double temp = 0;
+					int i;
+					for (i = 0; i < 9; i++)
+					{
+						int m, n; // 累積周遭用的參數
+						for (m = 0; m < 16; m++)
+						{
+							for (n = 0; n < 16; n++)
+							{
+								if ((x + macroblock[i].x + m) >= 0 && (y + macroblock[i].y + n) >= 0
+									&& (x + macroblock[i].x + m) < target.rows && (y + macroblock[i].y + n) < target.cols)
+								{ // 如果沒超出圖片範圍才需運算
+									temp = temp + abs(target.at<Vec3b>(x + m, y + n)[0]
+										- reference.at<Vec3b>(x + macroblock[i].x + m, y + macroblock[i].y + n)[0]);
+									// 將target與reference差異的motion累積起，找附近九宮格
+								}
+							}
+						}
+						temp = temp / 16 / 16; // 平均
+						if (temp < minMAD)
+						{
+							// 替換最小
+							minMAD = temp;
+							minx = macroblock[i].x;
+							miny = macroblock[i].y;
+						}
+					}
+					// 將u、v替換為失真最小座標
+					u = minx;
+					v = miny;
+					// 進行到沒有offset只剩最後一個時，轉為真，並在做最後一次
+					if(offset == 1)last = true;
+					offset = ceil(offset / 2);
+					macroblock.clear();
+					macroblock.push_back(Point(u - offset, v - offset));
+					macroblock.push_back(Point(u - offset, v));
+					macroblock.push_back(Point(u - offset, v + offset));
+					macroblock.push_back(Point(u, v - offset));
+					macroblock.push_back(Point(u, v));
+					macroblock.push_back(Point(u, v + offset));
+					macroblock.push_back(Point(u + offset, v - offset));
+					macroblock.push_back(Point(u + offset, v));
+					macroblock.push_back(Point(u + offset, v + offset));
+				}
+				int i, j;
+				for (i = 0; i < 16; i++)
+				{
+					for (j = 0; j < 16; j++)
+					{
+						if ((x + i) >= 0 && (y + j) >= 0 && (u + i) >= 0
+							&& (v + j) >= 0 && (x + i) < target.rows && (y + j) < target.cols
+							&& (u + i) < target.rows && (v + j) < target.cols)
+						{
+							// 整理三通道
+							i2p.at<Vec3b>(x + i, y + j)[0] = target.at<Vec3b>(u + i, v + j)[0];
+							i2p.at<Vec3b>(x + i, y + j)[1] = target.at<Vec3b>(u + i, v + j)[1];
+							i2p.at<Vec3b>(x + i, y + j)[2] = target.at<Vec3b>(u + i, v + j)[2];
+						}
+					}
+				}
+			}
+		}
 	}
 
 	else return 0;
