@@ -56,11 +56,20 @@ Motion Compensation
   
   2D Logarithmic Search 耗時 1004ms
   
-  2D Logarithmic Search較Sequential Searchc快4倍
+  2D Logarithmic Search較Sequential Search快4倍
   
+
 * SNRs
 
 ![Picture](tence.jpg)
+  
+
+* 模糊程度
+
+  2D Logarithmic Search較Sequential Search模糊得非常多，判斷是因為格數劃分剛好讓它往更失真的方向演算，
   
+  因此沒有Sequential Search來得滑順。
+  
+  此外也有可能是演算法應用錯誤，才造成這個結果。
 
 ## 心得
