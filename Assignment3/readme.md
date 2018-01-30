@@ -10,11 +10,11 @@ Motion Compensation
 
 * 程式使用方式
 
+![Picture](step.jpg)
+
 輸入1，使用Sequential Search
 
 輸入2，使用2D logarithmic search
-
-![Picture](step.jpg)
 
 ### Two input images
 
