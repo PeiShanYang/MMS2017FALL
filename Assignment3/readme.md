@@ -32,6 +32,6 @@ Motion Compensation
 ![Picture](2Dlogarithmicsearch.jpg)
 
 
-## 討論
+## 討論
 
 ## 心得
