@@ -1,8 +1,4 @@
-﻿  stdafx.cpp
-c:\users\yps92\desktop\mms2017fall\assignment3\assignment3\stdafx.cpp : warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
-c:\users\yps92\desktop\mms2017fall\assignment3\assignment3\stdafx.h : warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
-c:\users\yps92\desktop\mms2017fall\assignment3\assignment3\targetver.h : warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
-  Assignment3.cpp
+﻿  Assignment3.cpp
 c:\users\yps92\desktop\mms2017fall\assignment3\assignment3\assignment3.cpp : warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
   Assignment3.vcxproj -> C:\Users\yps92\Desktop\MMS2017FALL\Assignment3\x64\Debug\Assignment3.exe
   Assignment3.vcxproj -> C:\Users\yps92\Desktop\MMS2017FALL\Assignment3\x64\Debug\Assignment3.pdb (Partial PDB)
