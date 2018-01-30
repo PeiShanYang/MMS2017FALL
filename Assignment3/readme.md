@@ -22,6 +22,7 @@ Motion Compensation
   
 * 程式基本架構
 
+![Picture](stepbystep.jpg)
 
 ### Two input images
 
@@ -48,5 +49,18 @@ Motion Compensation
 
 
 ## 討論
+
+* Speed
+
+  Sequential Searchc 耗時 3800ms
+  
+  2D Logarithmic Search 耗時 1004ms
+  
+  2D Logarithmic Search較Sequential Searchc快4倍
+  
+* SNRs
+
+![Picture](tence.jpg)
+  
 
 ## 心得
