@@ -5,6 +5,8 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <cv.h>
+#include <highgui.h>
 #include <opencv2\core\core.hpp>
 #include <opencv2\highgui\highgui.hpp>
 
@@ -23,6 +25,7 @@ int main()
 	printf("Please enter the number to select the function.\n");
 	printf("1. Sequential search.\n"); // Sequential search
 	printf("2. 2D logarithmic search.\n"); // 2D logarithm search
+	printf("3. SNR.\n"); // 2D logarithm search
 	printf("Others. Exist.\n");
 
 	scanf_s("%d", &select);
@@ -184,6 +187,64 @@ int main()
 				}
 			}
 		}
+	}
+	else if (select == 3)
+	{
+		// 引入reference和兩結果的jpg檔
+		IplImage *src1 = cvLoadImage("reference.jpg");
+		IplImage *seq = cvLoadImage("sequentialsearch.jpg");
+		IplImage *tdl = cvLoadImage("2Dlogarithmicsearch.jpg");
+		IplImage *src2;
+		src2 = seq;
+
+		// 參數設定
+		long long int sigma = 0;
+		long long int squre = 0;
+		double SNR = 0.0;
+		int frameSize = src1->height*src1->width * 3;
+		// 三通道的累積先設為0
+		int blue1 = 0, blue2 = 0;
+		int green1 = 0, green2 = 0;
+		int red1 = 0, red2 = 0;
+
+		int i, j, k;
+		for(k = 0; k < 2; k++)
+		{
+			if(k == 1)
+			{
+				src2 = tdl;
+			}
+			for(i = 0; i < src1->height; i++)
+			{
+				for(j = 0; j < src1->widthStep; j = j + 3)
+				{
+					//藍色
+					blue1 = (int)(uchar)src1->imageData[i*src1->widthStep + j];
+					blue2 = (int)(uchar)src2->imageData[i*src2->widthStep + j];
+
+					// 綠色
+					green1 = (int)(uchar)src1->imageData[i*src1->widthStep + j + 1];
+					green2 = (int)(uchar)src2->imageData[i*src2->widthStep + j + 1];
+
+					// 紅色
+					red1 = (int)(uchar)src1->imageData[i*src1->widthStep + j + 2];
+					red2 = (int)(uchar)src2->imageData[i*src2->widthStep + j + 2];
+
+					// 分母
+					sigma = sigma + (blue1 - blue2) * (blue1 - blue2)
+						+ (green1 - green2) * (green1 - green2)
+						+ (red1 - red2) * (red1 - red2);
+					// 分子
+					squre = squre + (blue1 * blue1) + (green1 * green1) + (red1 * red1);
+				}
+			}
+			SNR = 10 * log10(squre / sigma);
+			if(k == 0)printf("Sequential Search SNR : %f\n", SNR);
+			else if (k == 1)printf("2D Logarithmic Search SNR : %f\n", SNR);
+		}
+		cvWaitKey(0);
+		system("pause");
+		return 0;
 	}
 
 	else return 0;

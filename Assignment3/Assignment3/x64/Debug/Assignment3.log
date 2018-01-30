@@ -1,6 +1,6 @@
 ﻿  Assignment3.cpp
 c:\users\yps92\desktop\mms2017fall\assignment3\assignment3\assignment3.cpp : warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
-c:\users\yps92\desktop\mms2017fall\assignment3\assignment3\assignment3.cpp(105): warning C4244: '正在初始化': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
-c:\users\yps92\desktop\mms2017fall\assignment3\assignment3\assignment3.cpp(157): warning C4244: '=': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+c:\users\yps92\desktop\mms2017fall\assignment3\assignment3\assignment3.cpp(108): warning C4244: '正在初始化': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+c:\users\yps92\desktop\mms2017fall\assignment3\assignment3\assignment3.cpp(160): warning C4244: '=': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
   Assignment3.vcxproj -> C:\Users\yps92\Desktop\MMS2017FALL\Assignment3\x64\Debug\Assignment3.exe
   Assignment3.vcxproj -> C:\Users\yps92\Desktop\MMS2017FALL\Assignment3\x64\Debug\Assignment3.pdb (Partial PDB)
