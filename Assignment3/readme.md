@@ -8,13 +8,20 @@ Motion Compensation
 
 ## 結果
 
-* 程式使用方式
+### 程式介紹
+
+* 程式介面
 
 ![Picture](step.jpg)
 
-輸入1，使用Sequential Search
+* 程式使用方式
 
-輸入2，使用2D logarithmic search
+  輸入1，使用Sequential Search
+  
+  輸入2，使用2D Logarithmic Search
+  
+* 程式基本架構
+
 
 ### Two input images
 
@@ -33,7 +40,7 @@ Motion Compensation
 ![Picture](sequentialsearch.jpg)
 
 
-### 2D logarithmic search
+### 2D Logarithmic Search
 
 * i2p
 
